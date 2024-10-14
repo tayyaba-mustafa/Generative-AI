@@ -1,4 +1,3 @@
-pip install streamlit matplotlib numpy
 import streamlit as st
 import math
 import numpy as np
@@ -93,3 +92,8 @@ elif operation_type == "Graphing":
     
     if st.button("Plot Graph"):
         plot_function(func)
+
+    
+    
+    
+   
