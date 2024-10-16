@@ -84,3 +84,11 @@ if graph_func != 'None':
     
     st.write(f"Plotting {graph_func} function")
     plot_function(func)
+
+        
+
+
+
+
+
+
