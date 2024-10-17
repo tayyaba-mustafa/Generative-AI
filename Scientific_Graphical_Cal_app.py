@@ -15,7 +15,7 @@ def basic_operations(operation, num1, num2=None):
         if num2 != 0:
             return num1 / num2
         else:
-            return "Error: Division by zero"
+            return "Zero Division Error: Division by zero is not allowed."
     elif operation == 'power':
         return math.pow(num1, num2)
     else:
@@ -30,9 +30,15 @@ def scientific_operations(operation, num1):
     elif operation == 'tan':
         return math.tan(num1)
     elif operation == 'log':
-        return math.log(num1)
+        if num1 > 0:
+            return math.log(num1)
+        else:
+            return "Error: Logarithm of non-positive number"
     elif operation == 'sqrt':
-        return math.sqrt(num1)
+        if num1 >= 0:
+            return math.sqrt(num1)
+        else:
+            return "Error: Square root of negative number"
     elif operation == 'exp':
         return math.exp(num1)
     else:
