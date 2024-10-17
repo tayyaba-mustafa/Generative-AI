@@ -30,6 +30,8 @@ def scientific_operations(operation, num1):
         return math.log(num1)
     elif operation == 'sqrt':
         return math.sqrt(num1)
+    elif operation == 'exp':
+        return math.exp(num1)
     else:
         return "Invalid Operation"
 
@@ -53,7 +55,7 @@ num1 = st.number_input("Enter Number 1", value=0.0)
 num2 = st.number_input("Enter Number 2 (if applicable)", value=0.0)
 
 operation = st.selectbox("Choose an Operation", 
-                         ['add', 'subtract', 'multiply', 'divide', 'power', 'sin', 'cos', 'tan', 'log', 'sqrt'])
+                         ['add', 'subtract', 'multiply', 'divide', 'power', 'sin', 'cos', 'tan', 'log', 'sqrt', 'exp'])
 
 # Button to perform the operation
 if st.button("Calculate"):
@@ -65,7 +67,7 @@ if st.button("Calculate"):
     st.write(f"Result: {result}")
 
 # Graphing section
-graph_func = st.selectbox("Select a function to plot", ['None', 'sin', 'cos', 'tan', 'log'])
+graph_func = st.selectbox("Select a function to plot", ['None', 'sin', 'cos', 'tan', 'log', 'exp'])
 
 if graph_func != 'None':
     if graph_func == 'sin':
@@ -76,11 +78,15 @@ if graph_func != 'None':
         func = np.tan
     elif graph_func == 'log':
         func = np.log
+    elif graph_func == 'exp':
+        func = np.exp
     
     st.write(f"Plotting {graph_func} function")
     plot_function(func)
 
-       
+    
+
+
 
 
 
