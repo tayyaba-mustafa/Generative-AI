@@ -12,7 +12,10 @@ def basic_operations(operation, num1, num2=None):
     elif operation == 'multiply':
         return num1 * num2
     elif operation == 'divide':
-        return num1 / num2
+        if num2 != 0:
+            return num1 / num2
+        else:
+            return "Error: Division by zero"
     elif operation == 'power':
         return math.pow(num1, num2)
     else:
