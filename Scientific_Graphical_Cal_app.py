@@ -13,6 +13,8 @@ def basic_operations(operation, num1, num2=None):
         return num1 * num2
     elif operation == 'divide':
         return num1 / num2
+    elif operation == 'power':
+        return math.pow(num1, num2)
     else:
         return "Invalid Operation"
 
@@ -28,11 +30,6 @@ def scientific_operations(operation, num1):
         return math.log(num1)
     elif operation == 'sqrt':
         return math.sqrt(num1)
-    elif operation == 'exp':
-        return math.exp(num1)
-    elif operation == 'power':
-        num2 = st.number_input("Enter the power:", value=1.0)
-        return math.pow(num1, num2)
     else:
         return "Invalid Operation"
 
@@ -56,11 +53,11 @@ num1 = st.number_input("Enter Number 1", value=0.0)
 num2 = st.number_input("Enter Number 2 (if applicable)", value=0.0)
 
 operation = st.selectbox("Choose an Operation", 
-                         ['add', 'subtract', 'multiply', 'divide', 'sin', 'cos', 'tan', 'log', 'sqrt', 'exp', 'power'])
+                         ['add', 'subtract', 'multiply', 'divide', 'power', 'sin', 'cos', 'tan', 'log', 'sqrt'])
 
 # Button to perform the operation
 if st.button("Calculate"):
-    if operation in ['add', 'subtract', 'multiply', 'divide']:
+    if operation in ['add', 'subtract', 'multiply', 'divide', 'power']:
         result = basic_operations(operation, num1, num2)
     else:
         result = scientific_operations(operation, num1)
@@ -68,7 +65,7 @@ if st.button("Calculate"):
     st.write(f"Result: {result}")
 
 # Graphing section
-graph_func = st.selectbox("Select a function to plot", ['None', 'sin', 'cos', 'tan', 'exp', 'log'])
+graph_func = st.selectbox("Select a function to plot", ['None', 'sin', 'cos', 'tan', 'log'])
 
 if graph_func != 'None':
     if graph_func == 'sin':
@@ -77,13 +74,17 @@ if graph_func != 'None':
         func = np.cos
     elif graph_func == 'tan':
         func = np.tan
-    elif graph_func == 'exp':
-        func = np.exp
     elif graph_func == 'log':
         func = np.log
     
     st.write(f"Plotting {graph_func} function")
     plot_function(func)
+
+       
+
+
+
+
 
         
 
