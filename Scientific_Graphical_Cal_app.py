@@ -49,34 +49,41 @@ def plot_function(func, start=-10, end=10):
     x = np.linspace(start, end, 400)
     y = func(x)
     fig, ax = plt.subplots()
-    ax.plot(x, y)
-    ax.set_title(f'Graph of {func.__name__}')
-    ax.set_xlabel('x')
-    ax.set_ylabel('f(x)')
+    ax.plot(x, y, label=f'{func.__name__}(x)', color='blue')
+    ax.set_title(f'Graph of {func.__name__}(x)', color='darkblue', fontsize=14)
+    ax.set_xlabel('x', fontsize=12)
+    ax.set_ylabel(f'{func.__name__}(x)', fontsize=12)
     ax.grid(True)
+    ax.legend()
     st.pyplot(fig)
 
-# Streamlit app structure
-st.title("Scientific Graphical Calculator")
+# Streamlit app structure with sidebar and appealing layout
+st.title("🔢 Scientific Graphical Calculator")
 
-# User inputs for basic operations
-num1 = st.number_input("Enter Number 1", value=0.0)
-num2 = st.number_input("Enter Number 2 (if applicable)", value=0.0)
+# Sidebar inputs for basic operations
+st.sidebar.title("🔧 Calculator Settings")
+num1 = st.sidebar.slider("Enter Number 1", min_value=-100.0, max_value=100.0, value=0.0)
+num2 = st.sidebar.slider("Enter Number 2 (if applicable)", min_value=-100.0, max_value=100.0, value=0.0)
 
-operation = st.selectbox("Choose an Operation", 
-                         ['add', 'subtract', 'multiply', 'divide', 'power', 'sin', 'cos', 'tan', 'log', 'sqrt', 'exp'])
+operation = st.sidebar.selectbox("Choose an Operation", 
+                                 ['add', 'subtract', 'multiply', 'divide', 'power', 'sin', 'cos', 'tan', 'log', 'sqrt', 'exp'])
 
 # Button to perform the operation
-if st.button("Calculate"):
+if st.sidebar.button("Calculate"):
+    st.subheader("🧮 Calculation Result")
     if operation in ['add', 'subtract', 'multiply', 'divide', 'power']:
         result = basic_operations(operation, num1, num2)
     else:
         result = scientific_operations(operation, num1)
     
-    st.write(f"Result: {result}")
+    st.write(f"**Result:** {result}")
 
 # Graphing section
+st.subheader("📊 Function Plotter")
 graph_func = st.selectbox("Select a function to plot", ['None', 'sin', 'cos', 'tan', 'log', 'exp'])
+
+# Range slider for graphing
+range_values = st.slider("Select range for the x-axis", min_value=-20, max_value=20, value=(-10, 10))
 
 if graph_func != 'None':
     if graph_func == 'sin':
@@ -89,9 +96,13 @@ if graph_func != 'None':
         func = np.log
     elif graph_func == 'exp':
         func = np.exp
-    
-    st.write(f"Plotting {graph_func} function")
-    plot_function(func)
+
+    st.write(f"Plotting the {graph_func} function from {range_values[0]} to {range_values[1]}")
+    plot_function(func, range_values[0], range_values[1])
+
+      
+
+
 
     
 
