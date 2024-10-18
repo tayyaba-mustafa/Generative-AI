@@ -16,7 +16,7 @@ h_inch = st.number_input("🔢 Enter your height (Inches):", min_value=0, step=1
 # Add a BMI calculation button
 if st.button("🧮 Calculate BMI"):
     if weight <= 0 or h_ft <= 0 and h_inch <= 0:
-        st.error("🚨 Weight and height must be positive numbers.")
+        st.error("🚨 Weight and height must be non-zero and positive numbers.")
     else:
         # Convert height from feet and inches to meters
         h_m = (h_ft * 0.3048) + (h_inch * 0.0254)
