@@ -76,7 +76,6 @@ if st.button("🧮 Calculate BMI"):
 st.markdown("""
     ---
     **Additional Resources:**
-    - [WHO BMI Guidelines](https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight)
     - [Healthy Eating Tips](https://www.choosemyplate.gov)
 """)
 
