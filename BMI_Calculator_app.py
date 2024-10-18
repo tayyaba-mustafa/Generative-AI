@@ -72,14 +72,6 @@ if st.button("🧮 Calculate BMI"):
                 - Address any underlying health conditions that may be contributing to weight gain.
                 """)
 
-# Add a footer with additional resources
-st.markdown("""
-    ---
-    **Additional Resources:**
-    - [Healthy Eating Tips](https://www.choosemyplate.gov)
-""")
-
-
        
             
             
