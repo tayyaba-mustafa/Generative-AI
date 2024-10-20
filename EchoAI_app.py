@@ -1,6 +1,5 @@
 import os
 import streamlit as st
-from groq import Groq
 
 # Set page configuration
 st.set_page_config(page_title="AI Content Generator", page_icon="📝", layout="wide")
@@ -11,7 +10,7 @@ st.image(logo, width=200)  # Adjust width as necessary
 
 # Page title
 st.title("AI Content Generator for Social Media")
-st.write("Generate engaging and creative content for social media using AI with Groq Llama.")
+st.write("Generate engaging and creative content for social media using AI.")
 
 # Sidebar
 st.sidebar.header("Settings")
@@ -27,27 +26,18 @@ brand_style = st.sidebar.selectbox("Select Writing Style:", ["Conversational", "
 # Input for user prompt
 prompt = st.text_area("Enter your content prompt:", help="Type a brief idea for your social media post.")
 
-# Set up the Groq client with your API key
-GROQ_API_KEY = "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"
-os.environ["GROQ_API_KEY"] = GROQ_API_KEY
-
-client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
-
-# Function to generate content using Groq Llama
+# Placeholder function to simulate content generation (replace with actual API call)
 def generate_content_with_groq(prompt, tone, style):
     # Combine the user prompt with the selected brand tone and style
     brand_prompt = f"Generate a {content_type} in a {tone} tone and {style} style. {prompt}"
     
-    chat_completion = client.chat.completions.create(
-        messages=[{"role": "user", "content": brand_prompt}],
-        model="llama3-8b-8192"
-    )
-    return chat_completion.choices[0].message.content
+    # Simulating the response (replace this with an actual call to Groq API)
+    return f"[Simulated Groq Llama Content] {brand_prompt}"
 
 # Button to generate content
 if st.button("Generate Content"):
     if prompt:
-        with st.spinner('Generating content using Groq...'):
+        with st.spinner('Generating content...'):
             generated_content = generate_content_with_groq(prompt, brand_tone, brand_style)
             st.success("Generated Content:")
             st.write(generated_content)
@@ -55,4 +45,4 @@ if st.button("Generate Content"):
         st.error("Please enter a prompt to generate content.")
 
 # Footer
-st.write("© 2024 Echo AI Content Generator | Powered by Groq Llama")
+st.write("© 2024 Echo AI Content Generator")
